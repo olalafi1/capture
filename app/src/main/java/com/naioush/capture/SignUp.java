@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.naioush.capture.R;
 
 public class SignUp extends AppCompatActivity {
-EditText prefix,name,mobile,email;
+    EditText prefix,name,mobile,email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +37,9 @@ EditText prefix,name,mobile,email;
                 Log.e("Mobile",prefix.getText()+""+mobile.getText());
 
                 if(!name.getText().toString().isEmpty()&&!mobile.getText().toString().isEmpty()
-                &&!prefix.getText().toString().isEmpty()&&!email.getText().toString().isEmpty())
+                        &&!prefix.getText().toString().isEmpty()&&!email.getText().toString().isEmpty())
                     startActivity(i);
-else
+                else
                     Toast.makeText(SignUp.this,"please fill all records",Toast.LENGTH_LONG).show();
             }
         });
