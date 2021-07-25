@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+<group >
+    <item android:title="Change Language"></item>
+    <item android:title="Notification"></item>
+    <item android:title="File Complaint"></item>
+    <item android:title="About Capture"></item>
+    <item android:title="Logout"></item>
+
+</group>
+</menu>

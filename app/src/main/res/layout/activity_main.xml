@@ -1,0 +1,52 @@
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerlayout"
+
+    android:backgroundTint="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layoutDirection="rtl"
+    >
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_alignParentTop="true"
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:background="#AAE9F3"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp" />
+
+    <eu.long1.spacetablayout.SpaceTabLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/spaceTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:outlineAmbientShadowColor="@color/Primary"
+
+        app:number_of_tabs="five"
+        app:starting_position="one"
+        app:tab_color="#FFFFFF"
+        app:text_color="@color/black"
+        app:button_color="#AB00B8D4"
+        app:icon_one="@drawable/crown"
+        app:icon_two="@drawable/crown"
+        app:icon_three="@drawable/crown"
+        app:icon_four="@drawable/crown"
+        app:icon_five="@drawable/crown"
+        />
+    <com.google.android.material.navigation.NavigationView
+
+        android:layoutDirection="ltr"
+        android:id="@+id/navigation"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:background="@color/Primary"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_profile"
+        android:layout_gravity="start">
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

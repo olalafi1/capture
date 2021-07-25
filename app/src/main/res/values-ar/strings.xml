@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Capture</string>
+    <string name="logintext">هل لديك حساب بالفعل؟</string>
+    <string name="alreadyhaveaccount">لدي حساب</string>
+    <string name="signup">تسجيل جديد</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="title_activity_landing_page">انطلق</string>
+    <string name="tab1">الرئيسية</string>
+    <string name="tab2">العروض</string>
+    <string name="tab3">فريقي</string>
+    <string name="tab4">الاعجابات</string>
+    <string name="tab5">الكل</string>
+    <string name="hello_blank_fragment">مرحبا بك</string>
+    <string name="phoneNo">رقم الهاتف</string>
+    <string name="welcome">"مرحبا بك في "</string>
+    <string name="create_post">إنشاء منشور</string>
+    <string name="caption">اكتب هنا</string>
+    <string name="addlocation">إضافة موقع</string>
+    <string name="privacy">خاص</string>
+    <string name="Home">الرئيسية</string>
+    <string name="Compitition">المسابقة</string>
+    <string name="Post">انشر</string>
+    <string name="yourname">الاسم</string>
+    <string name="email">الايميل</string>
+    <string name="signUp">التسجيل</string>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.naioush.capture.Home"
+    android:orientation="vertical"
+    android:background="@color/Primary">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp">
+            <ImageView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/txt"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/path"/>
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text=" About Capture"
+                android:gravity="bottom"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_centerInParent="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/homelogo"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+
+        android:background="@drawable/homebackground"
+        android:outlineAmbientShadowColor="@color/black"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:text="What is Caputre?"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Lorem ipsum dolor sit amet, 20.000 SYP adipiscing.
+Aen ean commodo ligula eget dolor. Aenean massa.
+25.000 YP sociis natoque"/>
+
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:text="What is Caputre?"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Lorem ipsum dolor sit amet, 20.000 SYP adipiscing.
+Aen ean commodo ligula eget dolor. Aenean massa.
+25.000 YP sociis natoque"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dgdf"/>
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing
+elit. Aenean commodo ligula eget dolor. Aenean
+massa. Cum sociis natoque penatibus et magnis dis
+parturient montes, nascetur ridiculus mus. Donec
+quam felis, ultricies nec, pellentesque eu, pretium
+quis, sem. Nulla consequat massa quis enim. Donec
+pede justo, fringilla vel, aliquet nec, vulputate eget,
+arcu. In enim justo, rhoncus ut, imperdiet a, venenatis
+vitae, justo. Nullam dictum felis eu pede mollis
+pretium.
+
+Integer tincidunt. Cras dapibus. Vivamus elementum
+semper nisi. Aenean vulputate eleifend tellus. Aenean
+leo ligula, porttitor eu, consequat vitae, eleifend ac,
+enim. Aliquam lorem ante, dapibus in, viverra quis,
+feugiat a, tellus. Phasellus viverra nulla ut metus varius
+ laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+ultricies nisi vel augue. Curabitur ullamcorper ultricies
+nisi. Nam eget dui. Etiam rhoncus. "/>
+
+            </LinearLayout>
+            <!-- TODO: Update blank fragment layout -->
+
+        </ScrollView></LinearLayout>
+</LinearLayout>

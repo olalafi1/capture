@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.naioush.capture.splash1"
+    android:background="@color/white"
+    >
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/li"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true">
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/logo"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="180dp"
+        android:layout_height="135dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/li"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:layout_margin="10dp"
+            android:textColorHint="@color/black"
+            />
+        <EditText
+            android:id="@+id/phone_number"
+            android:textColor="@color/black"
+            android:textColorHint="#555555"
+
+            android:layout_width="match_parent"
+            android:background="@drawable/radiusbutton"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:hint="+970597724423"/>
+        <com.naioush.capture.customfonts.Button_Poppins_Regular
+            android:id="@+id/loginbtn"
+android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:backgroundTint="#0041FF"
+            android:background="@drawable/loginbutton"
+            android:layout_margin="10dp"
+
+            />
+
+        <LinearLayout
+            android:layout_below="@id/loginbtn"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            tools:ignore="NotSibling">
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+            ><TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/logintext"/>
+            <TextView
+                android:id="@+id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#607953"
+                android:layout_marginLeft="5dp"
+                android:text="@string/signup"/>
+          </LinearLayout>
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line"
+
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+</RelativeLayout>

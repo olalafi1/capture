@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406005879754",
+    "project_id": "capture-d9533",
+    "storage_bucket": "capture-d9533.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406005879754:android:791963a8923aa89d383533",
+        "android_client_info": {
+          "package_name": "com.naioush.capture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406005879754-n5fj89qt6bbc790e434fjkin9fj2sbm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsYgGbvkYxWh_QAP6J4ANTHEZuUZ0nB-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406005879754-n5fj89qt6bbc790e434fjkin9fj2sbm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
