@@ -2,6 +2,7 @@ package com.naioush.capture;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -44,6 +45,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     ArrayList<comments> comment;
     ArrayList<ArrayList<comments> >commentArr;
     Context context;
+    SharedPreferences sp;
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -53,6 +56,7 @@ ImageView send,profileImg,postImg,comImg;
 TextView userName,title;
 EditText commentET;
 RecyclerView commentsRv;
+
         public ViewHolder(View view) {
             super(view);
 send=view.findViewById(R.id.send_comment);
@@ -77,8 +81,24 @@ commentsRv=view.findViewById(R.id.commentsRv);
         public void setUserData(String userName,String profileImg)  {
 this.userName.setText(userName);
             Uri imgUri=Uri.parse(profileImg);
+            Uri imgUri1=Uri.parse(profileImg);
             Picasso.get().load(imgUri.toString()).into(this.profileImg);
-            Picasso.get().load(imgUri.toString()).into(this.comImg);
+
+            FirebaseDatabase.getInstance().getReference().child("Users").child(userKey).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+User u=snapshot.getValue(User.class);
+                    Picasso.get().load(u.photo.toString()).into(comImg);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                }
+            });
+
 
         }
         public void getTextView() {
@@ -140,7 +160,9 @@ this.userName.setText(userName);
                 child(posts.get(position).createdBy).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-             Log.e("User",snapshot.getValue().toString());   User u=snapshot.getValue(User.class);
+             User u=snapshot.getValue(User.class);
+                Log.e("User",u.Name);
+
                 viewHolder.setUserData(u.Name,u.photo);
             }
 

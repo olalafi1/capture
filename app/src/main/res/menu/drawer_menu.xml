@@ -6,7 +6,7 @@
     <item android:title="Notification"></item>
     <item android:title="File Complaint"></item>
     <item android:title="About Capture"></item>
-    <item android:title="Logout"></item>
+    <item android:title="Logout" android:id="@+id/logout"></item>
 
 </group>
 </menu>

@@ -60,7 +60,10 @@ this.content.setText(content);
            try{ Uri imgUri=Uri.parse(photoURL);
 
             Picasso.get().load(imgUri.toString()).into(this.userImg);
-this.userName.setText(userName);}catch (Exception e){}
+this.userName.setText(userName);
+
+
+           }catch (Exception e){}
         }
     }
 
@@ -90,7 +93,7 @@ this.userName.setText(userName);}catch (Exception e){}
     @Override
     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
         User u=snapshot.getValue(User.class);
-        Log.e("user",snapshot.getValue().toString());
+        Log.e("NAMEUSER#",u.Name);
          viewHolder.setPhoto( u.photo,u.Name);
     }
 

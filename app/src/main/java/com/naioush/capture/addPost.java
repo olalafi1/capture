@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +47,7 @@ import java.util.Map;
 import static com.naioush.capture.Login.userKey;
 
 public class addPost extends AppCompatActivity {
-
+SharedPreferences sp;
     private static final int PICK_PHOTO_FOR_AVATAR =1 ;
 ImageView img;
 Button addPost;
@@ -62,6 +64,7 @@ RadioButton homeR,compitionR;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post2);
+        sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
         img=findViewById(R.id.post_photo);
 addPost=findViewById(R.id.post);
 titleEt=findViewById(R.id.title);
@@ -228,7 +231,7 @@ addLocation.setText(input.getText().toString());
         Post.put("classification",post.classification);
         Post.put("privacy",post.privacy);
         Post.put("status",post.status);
-        Post.put("createdBy",userKey);
+        Post.put("createdBy",sp.getString("userkey",null));
         DBRef.child(postKey).setValue(Post);
 
 

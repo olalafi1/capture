@@ -278,7 +278,10 @@ android:id="@+id/commentContent"
 
 
         </LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="@color/Primary"/>
 
     </LinearLayout>
     <!-- TODO: Update blank fragment layout -->

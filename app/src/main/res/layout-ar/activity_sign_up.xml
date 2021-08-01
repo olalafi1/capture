@@ -73,7 +73,7 @@
                 android:id="@+id/name"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-
+android:textDirection="rtl"
                 android:layout_width="match_parent"
                 android:background="@drawable/radiusbutton"
                 android:layout_height="60dp"

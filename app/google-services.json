@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "406005879754",
+    "firebase_url": "https://capture-d9533-default-rtdb.firebaseio.com",
     "project_id": "capture-d9533",
     "storage_bucket": "capture-d9533.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "406005879754-jpmem14df8qs61n16fioi0617vkkeatd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.naioush.capture",
+            "certificate_hash": "77cb6718bad340ffe07fcf8bcb5172ff0539f69a"
+          }
+        },
         {
           "client_id": "406005879754-n5fj89qt6bbc790e434fjkin9fj2sbm6.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +38,13 @@
             {
               "client_id": "406005879754-n5fj89qt6bbc790e434fjkin9fj2sbm6.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "406005879754-q18qdv3relgj9lccalktb5o66agg7mrc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ios.capture"
+              }
             }
           ]
         }

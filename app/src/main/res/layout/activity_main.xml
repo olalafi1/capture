@@ -25,17 +25,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 android:outlineAmbientShadowColor="@color/Primary"
-
+android:layoutDirection="ltr"
         app:number_of_tabs="five"
         app:starting_position="one"
         app:tab_color="#FFFFFF"
         app:text_color="@color/black"
         app:button_color="#AB00B8D4"
-        app:icon_one="@drawable/crown"
-        app:icon_two="@drawable/crown"
-        app:icon_three="@drawable/crown"
-        app:icon_four="@drawable/crown"
-        app:icon_five="@drawable/crown"
+        app:icon_one="@drawable/home"
+        app:icon_two="@drawable/offers"
+        app:icon_three="@drawable/mmmyteeam"
+app:icon_four="@drawable/likes"
+        app:icon_five="@drawable/hall"
         />
     <com.google.android.material.navigation.NavigationView
 

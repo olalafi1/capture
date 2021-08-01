@@ -6,13 +6,26 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.naioush.capture.R;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +42,7 @@ public class Hall extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ArrayList<comments> commentsArr;
 
     public Hall() {
         // Required empty public constructor
@@ -68,11 +82,10 @@ public class Hall extends Fragment {
         return inflater.inflate(R.layout.fragment_hall, container, false);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-      LinearLayout l= view.findViewById(R.id.addPost);
+
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        LinearLayout l= view.findViewById(R.id.addPost);
         l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,5 +93,67 @@ public class Hall extends Fragment {
                 startActivity(i);
             }
         });
+        commentsArr=new ArrayList<>();
+
+        LinearLayout Elite=view.findViewById(R.id.eliet);
+        LinearLayout team=view.findViewById(R.id.team);
+        LinearLayout competition=view.findViewById(R.id.competition);
+        TextView teamtext=view.findViewById(R.id.teamtext);
+        TextView elitetext=view.findViewById(R.id.eliettext);
+        TextView compitiontext=view.findViewById(R.id.competitiontext);
+        Log.e(getContext().getClass().getName(),"Start");
+        Elite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),EiletPeople.class);
+                startActivity(intent);
+                teamtext.setBackgroundResource(R.color.Primary);
+                compitiontext.setBackgroundResource(R.color.Primary);
+
+            }
+        });
+
+
+
+
+
+
+        ArrayList<Post> posts=new ArrayList<>();
+        ArrayList<comments> comments=new ArrayList<>();
+
+        RecyclerView rv=view.findViewById(R.id.rv);
+        FirebaseDatabase FBD=FirebaseDatabase.getInstance();
+        DatabaseReference DBRef=FBD.getReference();
+        CustomAdapter adapter=new CustomAdapter(getContext(),posts);
+
+
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        DBRef.child("Posts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                posts.clear();
+                for (DataSnapshot ds:snapshot.getChildren())
+                {Log.e("Value",ds.getValue().toString()+"n");
+                    Post p=ds.getValue(Post.class);
+                    posts.add(p);
+                    adapter.notifyDataSetChanged();
+
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
     }
+
+
 }

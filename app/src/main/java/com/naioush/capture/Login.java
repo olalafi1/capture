@@ -1,7 +1,10 @@
 package com.naioush.capture;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,10 +41,16 @@ import java.util.concurrent.TimeUnit;
 public class Login extends AppCompatActivity {
 int userSize=0;
 static String userKey="";
+    SharedPreferences sp ;
+    SharedPreferences.Editor editor ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
+        editor = sp.edit();
+
         Button loginbtn=findViewById(R.id.loginbtn);
         EditText phone_number=findViewById(R.id.phone_number);
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +67,9 @@ static String userKey="";
 
                             if ((user.get("countryPrefix") + user.get("Mobile")).equals(phone_number.getText().toString())) {
                                 userKey = ds.getKey();
+                                Log.e("Key",userKey);
+sp.edit().putString("userkey",userKey).apply();
+sp.edit().commit();
                                 Intent i = new Intent(Login.this, FirstPage.class);
                                 startActivity(i);
                             }

@@ -1,27 +1,55 @@
 package com.naioush.capture;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 
+import com.google.android.material.navigation.NavigationView;
 import com.naioush.capture.R;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import eu.long1.spacetablayout.SpaceTabLayout;
 
+import static com.naioush.capture.Login.userKey;
+
 public class FirstPage extends AppCompatActivity {
     SpaceTabLayout tabLayout;
-
+SharedPreferences sp;
+Intent i;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        NavigationView nv=findViewById(R.id.navigation);
+        Log.e("@#$%",userKey);
+        sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
+        i=getIntent();
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+
+                if(item.getTitle().equals("Logout")){
+                    sp.edit().clear().commit();
+                    Intent i=new Intent(FirstPage.this,Login.class);
+                    startActivity(i);
+                }
+                return false;
+            }
+        });
 
         //add the fragments you want to display in a List
         List<Fragment> fragmentList = new ArrayList<>();

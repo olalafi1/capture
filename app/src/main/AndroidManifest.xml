@@ -2,18 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.naioush.capture">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION"/>
-    <uses-permission android:name="android.permission.SMS_FINANCIAL_TRANSACTIONS"/>
-    <uses-permission android:name="android.permission.BROADCAST_SMS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION" />
+    <uses-permission android:name="android.permission.SMS_FINANCIAL_TRANSACTIONS" />
+    <uses-permission
+        android:name="android.permission.BROADCAST_SMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capture">
-        <activity android:name=".PhoneAuthActivity"></activity>
+        <activity android:name=".UserProfile"></activity>
+        <activity android:name=".PhoneAuthActivity" />
         <activity android:name=".addPost" />
         <activity android:name=".customfonts.addPost" />
         <activity android:name=".settengAbout" />
