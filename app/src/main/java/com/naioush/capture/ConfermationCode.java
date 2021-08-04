@@ -62,6 +62,7 @@ TextView mTextField;
 Button resendCode;
 LinearLayout timerL;
 Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,7 +203,7 @@ signWithCredental(credential);
 
 
 
-
+userKey=mAuth.getCurrentUser().getUid();
 
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -237,7 +238,8 @@ signWithCredental(credential);
                             DBRef.child(mAuth.getCurrentUser().getUid()).setValue(user);
                             Toast.makeText(ConfermationCode.this,"Create Account Done Successfully",Toast.LENGTH_LONG).show();
                             SharedPreferences sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
-                            sp.edit().putString("userkey",mAuth.getCurrentUser().getUid());
+                            sp.edit().putString("userkey",mAuth.getCurrentUser().getUid()).apply();
+                            sp.edit().commit();
                             Log.e("UserKey",mAuth.getCurrentUser().getUid());
                             Intent i=new Intent(ConfermationCode.this,FirstPage.class);
                             startActivity(i);

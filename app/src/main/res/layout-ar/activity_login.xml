@@ -65,7 +65,7 @@
                 android:background="@drawable/radiusbutton"
                 android:layout_height="60dp"
                 android:padding="10dp"
-                android:hint="+970597724423"/>
+                android:hint="970597724423+"/>
             <com.naioush.capture.customfonts.Button_Poppins_Regular
                 android:id="@+id/loginbtn"
                 android:layout_gravity="center"

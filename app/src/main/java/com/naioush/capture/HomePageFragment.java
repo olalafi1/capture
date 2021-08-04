@@ -152,7 +152,7 @@ DBRef.child("Posts").addValueEventListener(new ValueEventListener() {
     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
         posts.clear();
        for (DataSnapshot ds:snapshot.getChildren())
-       {Log.e("Value",ds.getValue().toString()+"n");
+       {
         Post p=ds.getValue(Post.class);
         posts.add(p);
         adapter.notifyDataSetChanged();

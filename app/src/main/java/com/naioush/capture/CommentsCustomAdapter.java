@@ -93,7 +93,6 @@ this.userName.setText(userName);
     @Override
     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
         User u=snapshot.getValue(User.class);
-        Log.e("NAMEUSER#",u.Name);
          viewHolder.setPhoto( u.photo,u.Name);
     }
 

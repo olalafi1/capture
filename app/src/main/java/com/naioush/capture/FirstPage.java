@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 import com.naioush.capture.R;
@@ -38,6 +39,14 @@ Intent i;
         Log.e("@#$%",userKey);
         sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
         i=getIntent();
+        nv.getHeaderView(0).findViewById(R.id.profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(FirstPage.this,UserProfile.class);
+                startActivity(i);
+            }
+        });
+
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {

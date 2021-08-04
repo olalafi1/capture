@@ -1,9 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.naioush.capture.Home"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    android:background="@color/Primary">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_margin="20dp"
+
+                android:id="@+id/Post"
+                android:layout_marginLeft="20dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="19\nPost"/>
+            <TextView
+                android:id="@+id/Folowers"
+                android:layout_marginLeft="20dp"
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="2.5\nFollowers"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="20dp"
+
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear1"
+            android:layout_alignParentRight="true"
+           >
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_margin="20dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="2.5\nFollowing"/>
+            <TextView
+                android:layout_margin="20dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="2.5\nLikes"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_marginLeft="15dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginLeft="20dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:elevation="12dp"
+                android:id="@+id/view2"
+                android:backgroundTint="#7C7878"
+                app:cardCornerRadius="50dp"
+                android:layout_alignParentLeft="true"
+                android:innerRadius="50dp"
+
+                android:shape="oval"
+                android:thicknessRatio="5.9">
+                <ImageView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/profileImg"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/userName"
+                android:layout_marginLeft="20dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="Name"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/email"
+                android:layout_marginLeft="20dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="Email"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_alignParentTop="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/homelogo"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:background="@drawable/homebackground"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView></LinearLayout>
+</LinearLayout>

@@ -3,7 +3,9 @@ package com.naioush.capture;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +28,7 @@ public class SignUp extends AppCompatActivity {
     private InputStream inputStream;
     private Uri selectedImageUri;
     private String path;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class SignUp extends AppCompatActivity {
         email=findViewById(R.id.email);
         imageView1=findViewById(R.id.imageView1);
         Button loginbtn=findViewById(R.id.signup);
+        sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

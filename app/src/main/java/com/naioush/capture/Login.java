@@ -3,6 +3,7 @@ package com.naioush.capture;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthSettings;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -24,8 +28,12 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.naioush.capture.R;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
@@ -35,12 +43,13 @@ import com.google.android.gms.tasks.Task;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Login extends AppCompatActivity {
 int userSize=0;
-static String userKey="";
+public static String userKey;
     SharedPreferences sp ;
     SharedPreferences.Editor editor ;
     @Override
@@ -70,8 +79,11 @@ static String userKey="";
                                 Log.e("Key",userKey);
 sp.edit().putString("userkey",userKey).apply();
 sp.edit().commit();
-                                Intent i = new Intent(Login.this, FirstPage.class);
-                                startActivity(i);
+
+                                Log.e("Key",sp.getString("userKey",null));
+                                PhoneAuthCredential credential=PhoneAuthProvider.getCredential(user.get("verificationId"),user.get("verifyCode"));
+                                signWithCredental(credential);
+
                             }
 
                             if (count == userSize) {
@@ -123,4 +135,17 @@ sp.edit().commit();
             }
         });
     }
+
+    private void signWithCredental(PhoneAuthCredential credential) {
+        FirebaseAuth mAuth=FirebaseAuth.getInstance();
+
+        mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                Intent i = new Intent(Login.this, FirstPage.class);
+                startActivity(i);
+                Toast.makeText(Login.this,"تم تسجيل الدخول ",Toast.LENGTH_LONG).show();
+            }
+        });}
+
 }

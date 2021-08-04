@@ -1,10 +1,12 @@
 package com.naioush.capture;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,15 +56,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 ImageView send,profileImg,postImg,comImg;
-TextView userName,title;
+TextView userName,title,NO_Likes,location;
 EditText commentET;
 RecyclerView commentsRv;
-
+LinearLayout likeLayout;
+ImageView likeHeart;
         public ViewHolder(View view) {
             super(view);
 send=view.findViewById(R.id.send_comment);
 commentET=view.findViewById(R.id.commentContent);
 commentsRv=view.findViewById(R.id.commentsRv);
+likeHeart=view.findViewById(R.id.likeHeart);
+likeLayout=view.findViewById(R.id.likeLayer);
+            NO_Likes=view.findViewById(R.id.NO_Likes);
+            location=view.findViewById(R.id.location);
             profileImg=view.findViewById(R.id.profileImg);
             postImg=view.findViewById(R.id.postImg);
             comImg=view.findViewById(R.id.comImg);
@@ -75,7 +83,6 @@ commentsRv=view.findViewById(R.id.commentsRv);
 
             Uri imgUri=Uri.parse(postImg);
             Picasso.get().load(imgUri.toString()).into(this.postImg);
-
         }
 
         public void setUserData(String userName,String profileImg)  {
@@ -126,6 +133,46 @@ User u=snapshot.getValue(User.class);
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+
+
+
+
+
+        viewHolder.location.setText(posts.get(position).location);
+
+
+
+
+        SharedPreferences sp = context.getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
+FirebaseDatabase.getInstance().getReference("Posts").child(posts.get(position).key).child("Likes").addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+viewHolder.NO_Likes.setText(snapshot.getChildrenCount()+"Likes");
+        for (DataSnapshot snapshot1:snapshot.getChildren())  {
+    Log.e("key!@#",
+            snapshot1.getKey().equals(
+                    sp.getString("userkey",""))+"");
+
+    if(snapshot1.getKey().equals(
+            sp.getString("userkey",""))){
+Log.e("key$$$$$$$$",snapshot1.getKey());
+        viewHolder.likeHeart.setImageResource(R.drawable.filllike);
+
+        viewHolder.likeHeart.setTag("liked");
+    }
+    else{
+        viewHolder.likeHeart.setImageResource(R.drawable.likes);
+        viewHolder.likeHeart.setTag("notliked");
+
+    }
+
+} }
+
+    @Override
+    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+    }
+});
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         java.util.Date c = Calendar.getInstance().getTime();
@@ -156,12 +203,58 @@ User u=snapshot.getValue(User.class);
             }
         });
 
+
+
+
+
+
+        viewHolder.likeLayout.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View v) {
+                String mDrawableName = "filllike" ;
+                int resID = viewHolder.likeHeart.getResources().getIdentifier(mDrawableName , "drawable" ,context.getPackageName()) ;
+                Drawable myImage = context.getResources().getDrawable(R.drawable.likes);
+                Drawable myImage1 = context.getResources().getDrawable(R.drawable.filllike);
+             String key=   FirebaseDatabase.getInstance().getReference("Posts").child(posts.get(position).key).child("Likes").push().getKey();
+
+
+if(viewHolder.likeHeart.getTag().toString().equals("liked")){
+    viewHolder.likeHeart.setImageResource(R.drawable.likes);
+    viewHolder.likeHeart.setTag("notliked");
+    Log.e("!@#$$$$$",viewHolder.likeHeart.getTag().toString());
+    FirebaseDatabase.getInstance().getReference("Posts")
+            .child(posts.get(position).key).
+            child("Likes").child(sp.getString("userkey","")).removeValue();
+
+}
+else{
+    viewHolder.likeHeart.setImageResource(R.drawable.filllike);
+    viewHolder.likeHeart.setTag("liked");
+
+ FirebaseDatabase.getInstance().getReference("Posts")
+            .child(posts.get(position).key).
+            child("Likes").child(sp.getString("userkey","")).setValue("");
+
+
+    Log.e("!@#$$",viewHolder.likeHeart.getResources()+""+resID);
+
+
+}
+
+
+                   // viewHolder.likeHeart.setImageResource(R.drawable.likes);
+            }
+        });
+
+
+
+
         FirebaseDatabase.getInstance().getReference().child("Users").
                 child(posts.get(position).createdBy).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
              User u=snapshot.getValue(User.class);
-                Log.e("User",u.Name);
 
                 viewHolder.setUserData(u.Name,u.photo);
             }

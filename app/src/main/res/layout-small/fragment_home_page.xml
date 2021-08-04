@@ -24,8 +24,8 @@
                 android:orientation="vertical" android:layout_margin="10dp">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/tteam"/>
                 <TextView
                     android:id="@+id/teamtext"
@@ -47,8 +47,8 @@
                 android:orientation="vertical" android:layout_margin="10dp">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/eli"/>
                 <TextView
                     android:id="@+id/eliettext"
@@ -72,15 +72,15 @@
                 >
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/com"/>
                 <TextView
                     android:id="@+id/competitiontext"
-android:padding="10dp"
+                    android:padding="10dp"
                     android:textSize="14dp"
                     android:textAlignment="center"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="@color/white"
@@ -96,7 +96,7 @@ android:padding="10dp"
             android:layout_alignParentTop="true"
             android:layout_width="100dp"
             android:layout_height="100dp"
-android:layout_centerInParent="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center_vertical"
             android:src="@drawable/homelogo"/>
     </RelativeLayout>
@@ -112,7 +112,7 @@ android:layout_centerInParent="true"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-        >
+            >
 
         </androidx.recyclerview.widget.RecyclerView></LinearLayout>
 </LinearLayout>

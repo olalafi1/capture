@@ -72,7 +72,7 @@
             <EditText
                 android:id="@+id/name"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="#BF888888"
 android:textDirection="rtl"
                 android:layout_width="match_parent"
                 android:background="@drawable/radiusbutton"
@@ -95,23 +95,23 @@ android:textDirection="rtl"
                 <EditText
                     android:id="@+id/prefex"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/black"
+                    android:textColorHint="#BF888888"
 
                     android:layout_width="100dp"
                     android:background="@drawable/radiusbutton"
                     android:layout_height="60dp"
                     android:padding="10dp"
-                    android:hint="+972"/>
+                    android:hint="962+"/>
                 <EditText
                     android:id="@+id/phoneNum"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/black"
+                    android:textColorHint="#BF888888"
 
                     android:layout_width="match_parent"
                     android:background="@drawable/radiusbutton"
                     android:layout_height="60dp"
                     android:padding="10dp"
-                    android:hint="597724423"/>
+                    android:hint="799144432"/>
 
             </LinearLayout>
             <TextView
@@ -125,7 +125,7 @@ android:textDirection="rtl"
             <EditText
                 android:id="@+id/email"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="#BF888888"
 
                 android:layout_width="match_parent"
                 android:background="@drawable/radiusbutton"

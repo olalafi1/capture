@@ -33,81 +33,81 @@
             android:layout_centerInParent="true"
             android:layout_below="@id/li"
             android:orientation="vertical"
-           >
-        <LinearLayout
+            >
+            <LinearLayout
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-            <EditText
-                android:nextFocusLeft="@id/no2"
-                android:id="@+id/no1"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_margin="2sp"
-
-                android:layout_width="50dp"
-                android:background="@drawable/radiusbutton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-/>
-            <EditText
-                android:id="@+id/no2"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_margin="2sp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <EditText
+                    android:nextFocusLeft="@id/no2"
+                    android:id="@+id/no1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_margin="2sp"
 
-                android:layout_width="50dp"
-                android:background="@drawable/radiusbutton"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                />
-            <EditText
-                android:id="@+id/no3"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_margin="2sp"
+                    android:layout_width="60dp"
+                    android:background="@drawable/radiusbutton"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    />
+                <EditText
+                    android:id="@+id/no2"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_margin="2sp"
 
-                android:layout_width="50dp"
-                android:background="@drawable/radiusbutton"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                />
-            <EditText
-                android:id="@+id/no4"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_margin="2sp"
-                android:layout_width="50dp"
-                android:background="@drawable/radiusbutton"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                />
-            <EditText
-                android:id="@+id/no5"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                    android:layout_width="60dp"
+                    android:background="@drawable/radiusbutton"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    />
+                <EditText
+                    android:id="@+id/no3"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_margin="2sp"
 
-                android:layout_width="50dp"
-                android:background="@drawable/radiusbutton"
-                android:layout_height="wrap_content"
-                android:layout_margin="2sp"
+                    android:layout_width="60dp"
+                    android:background="@drawable/radiusbutton"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    />
+                <EditText
+                    android:id="@+id/no4"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_margin="2sp"
+                    android:layout_width="60dp"
+                    android:background="@drawable/radiusbutton"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    />
+                <EditText
+                    android:id="@+id/no5"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
 
-                android:padding="10dp"
-                />
-            <EditText
-                android:id="@+id/no6"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                    android:layout_width="60dp"
+                    android:background="@drawable/radiusbutton"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2sp"
 
-                android:layout_width="50dp"
-                android:background="@drawable/radiusbutton"
-                android:layout_height="wrap_content"
-                android:layout_margin="2sp"
+                    android:padding="10dp"
+                    />
+                <EditText
+                    android:id="@+id/no6"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
 
-                android:padding="10dp"
-                /></LinearLayout>
+                    android:layout_width="60dp"
+                    android:background="@drawable/radiusbutton"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2sp"
+
+                    android:padding="10dp"
+                    /></LinearLayout>
 
 
             <LinearLayout

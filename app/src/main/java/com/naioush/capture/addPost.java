@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -76,7 +77,7 @@ compitionR=findViewById(R.id.compition);
 
         Object calendar = Calendar.getInstance();
         java.util.Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
+        System.out.println("Current time => " + sp.getString("userKey",null));
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
          formattedDate = df.format(c);
@@ -217,11 +218,13 @@ addLocation.setText(input.getText().toString());
 
 
     public void addPost(){
+        Log.e("user!!!",userKey);
         FirebaseDatabase FBD=FirebaseDatabase.getInstance();
         DatabaseReference DBRef=FBD.getReference("Posts");
 
         String postKey=DBRef.push().getKey();
-        Post post=  new Post(postKey,formattedDate,title,photo,classification,location,privacy,status,null);
+
+        Post post=  new Post(postKey,formattedDate,title,photo,classification,location,privacy,status,userKey);
 
         Map<String,String> Post=new HashMap<>();
         Post.put("Date",post.Date);
@@ -231,8 +234,9 @@ addLocation.setText(input.getText().toString());
         Post.put("classification",post.classification);
         Post.put("privacy",post.privacy);
         Post.put("status",post.status);
-        Post.put("createdBy",sp.getString("userkey",null));
-        DBRef.child(postKey).setValue(Post);
+        Post.put("location",post.location);
+        Post.put("createdBy",userKey);
+        DBRef.child(postKey).setValue(post);
 
 
     }
