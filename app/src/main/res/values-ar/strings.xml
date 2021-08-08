@@ -24,4 +24,6 @@
     <string name="yourname">الاسم</string>
     <string name="email">الايميل</string>
     <string name="signUp">التسجيل</string>
+    <string name="addedSuccessfully">"تمت الإضافة "</string>
+    <string name="pleasefillallrecord">الرجاء التاكد من تعبئة جميع الحقول واختيار صورة</string>
 </resources>

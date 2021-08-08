@@ -11,8 +11,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:layoutDirection="ltr"
+                android:gravity="left"
                 android:id="@+id/back"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/logo"
                 android:layout_marginLeft="15dp"
@@ -56,8 +58,8 @@
                     android:orientation="vertical" android:layout_margin="10dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/food"/>
                     <TextView
                         android:id="@+id/teamtext"
@@ -79,8 +81,8 @@
                     android:orientation="vertical" android:layout_margin="10dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/technology"/>
                     <TextView
                         android:id="@+id/technologytext"
@@ -104,8 +106,8 @@
                     >
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/sports"/>
                     <TextView
                         android:id="@+id/competitiontext"
@@ -128,8 +130,8 @@
                     >
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:src="@drawable/com"/>
                     <TextView
                         android:id="@+id/Hobbiestext"

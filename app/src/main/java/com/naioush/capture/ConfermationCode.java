@@ -118,6 +118,22 @@ verifyMe();
             @Override
             public void onClick(View v) {
                 reSendCode();
+                resendCode.setVisibility(View.GONE);
+                timerL.setVisibility(View.VISIBLE);
+
+                new CountDownTimer(60000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                        //here you can have your logic to set text to edittext
+                    }
+
+                    public void onFinish() {
+                        timerL.setVisibility(View.GONE);
+                        resendCode.setVisibility(View.VISIBLE);
+                    }
+
+                }.start();
             }
 
         });
@@ -236,7 +252,7 @@ userKey=mAuth.getCurrentUser().getUid();
                             user.put("photo",downloadUri.toString());
 
                             DBRef.child(mAuth.getCurrentUser().getUid()).setValue(user);
-                            Toast.makeText(ConfermationCode.this,"Create Account Done Successfully",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ConfermationCode.this,R.string.addedSuccessfully,Toast.LENGTH_LONG).show();
                             SharedPreferences sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
                             sp.edit().putString("userkey",mAuth.getCurrentUser().getUid()).apply();
                             sp.edit().commit();

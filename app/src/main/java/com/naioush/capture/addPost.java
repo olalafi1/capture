@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -238,7 +239,9 @@ addLocation.setText(input.getText().toString());
         Post.put("createdBy",userKey);
         DBRef.child(postKey).setValue(post);
 
+        Toast.makeText(addPost.this,R.string.addedSuccessfully,Toast.LENGTH_LONG).show();
 
+onBackPressed();
     }
 
     public void pickImage() {

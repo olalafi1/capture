@@ -9,13 +9,21 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.naioush.capture.R;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -39,10 +47,29 @@ Intent i;
         Log.e("@#$%",userKey);
         sp = getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
         i=getIntent();
+        FirebaseDatabase.getInstance().getReference("Users").child(sp.getString("userkey",null)).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+               User u=snapshot.getValue(User.class);
+                TextView name=   nv.getHeaderView(0).findViewById(R.id.name);
+                TextView phone=   nv.getHeaderView(0).findViewById(R.id.phone);
+                ImageView profileImg=nv.getHeaderView(0).findViewById(R.id.profileImg);
+                Picasso.get().load(Uri.parse(u.photo)).into(profileImg);
+                name.setText(u.Name);
+                phone.setText(u.countryPrefix+u.Mobile);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+
         nv.getHeaderView(0).findViewById(R.id.profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(FirstPage.this,UserProfile.class);
+           Intent i=new Intent(FirstPage.this,UserProfile.class);
                 startActivity(i);
             }
         });

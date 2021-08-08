@@ -72,16 +72,17 @@ public static String userKey;
                         int count=0;
 
                         for (DataSnapshot ds:snapshot.getChildren()) {
-                            Map<String, String> user = (Map<String, String>) ds.getValue();
+                            Log.e("Data",ds.getValue().toString());
 
-                            if ((user.get("countryPrefix") + user.get("Mobile")).equals(phone_number.getText().toString())) {
+                            User user = (User) ds.getValue(User.class);
+                            if ((user.countryPrefix + user.Mobile).equals(phone_number.getText().toString())) {
                                 userKey = ds.getKey();
                                 Log.e("Key",userKey);
 sp.edit().putString("userkey",userKey).apply();
 sp.edit().commit();
 
-                                Log.e("Key",sp.getString("userKey",null));
-                                PhoneAuthCredential credential=PhoneAuthProvider.getCredential(user.get("verificationId"),user.get("verifyCode"));
+                                Log.e("Key",sp.getString("userKey",""));
+                                PhoneAuthCredential credential=PhoneAuthProvider.getCredential(user.verificationId,user.verifyCode);
                                 signWithCredental(credential);
 
                             }

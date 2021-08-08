@@ -28,6 +28,8 @@ import com.naioush.capture.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +40,8 @@ import java.util.Map;
  */
 public class HomePageFragment extends Fragment {
     ArrayList<ArrayList<comments>> commentsArr;
+    ArrayList<Post> posts;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -95,6 +99,7 @@ public class HomePageFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
 commentsArr=new ArrayList<>();
+         posts=new ArrayList<>();
 
         LinearLayout Elite=view.findViewById(R.id.eliet);
         LinearLayout team=view.findViewById(R.id.team);
@@ -136,7 +141,6 @@ commentsArr=new ArrayList<>();
 
 
 
-        ArrayList<Post> posts=new ArrayList<>();
         ArrayList<comments> comments=new ArrayList<>();
 
         RecyclerView rv=view.findViewById(R.id.rv);
@@ -155,6 +159,7 @@ DBRef.child("Posts").addValueEventListener(new ValueEventListener() {
        {
         Post p=ds.getValue(Post.class);
         posts.add(p);
+        Collections.reverse(posts);
         adapter.notifyDataSetChanged();
 
 

@@ -26,6 +26,7 @@ import com.naioush.capture.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -137,6 +138,7 @@ public class Hall extends Fragment {
                 {Log.e("Value",ds.getValue().toString()+"n");
                     Post p=ds.getValue(Post.class);
                     posts.add(p);
+                    Collections.reverse(posts);
                     adapter.notifyDataSetChanged();
 
 

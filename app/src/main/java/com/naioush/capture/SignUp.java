@@ -33,6 +33,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_sign_up);
         prefix=findViewById(R.id.prefex);
         name=findViewById(R.id.name);
@@ -53,7 +54,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if(!name.getText().toString().isEmpty()&&!mobile.getText().toString().isEmpty()
+                if(!name.getText().toString().isEmpty()&&!mobile.getText().toString().isEmpty()&&selectedImageUri!=null
                         &&!prefix.getText().toString().isEmpty()&&!email.getText().toString().isEmpty()){
 
                     Intent i=new Intent(SignUp.this,ConfermationCode.class);
@@ -71,7 +72,7 @@ public class SignUp extends AppCompatActivity {
 
                 }
                 else
-                    Toast.makeText(SignUp.this,"please fill all records",Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUp.this,R.string.pleasefillallrecord,Toast.LENGTH_LONG).show();
             }
         });
 

@@ -24,4 +24,8 @@
     <string name="yourname">Your Name</string>
     <string name="email">Email</string>
     <string name="signUp">Sign UP</string>
+    <string name="addedSuccessfully">added Successfully</string>
+    <string name="pleasefillallrecord">  please fill all records</string>
+
+
 </resources>
