@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import eu.long1.spacetablayout.SpaceTabLayout;
 
@@ -83,6 +85,9 @@ Intent i;
                     Intent i=new Intent(FirstPage.this,Login.class);
                     startActivity(i);
                 }
+
+
+
                 return false;
             }
         });

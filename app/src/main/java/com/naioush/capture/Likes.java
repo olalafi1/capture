@@ -1,14 +1,31 @@
 package com.naioush.capture;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.naioush.capture.R;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,5 +79,59 @@ public class Likes extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_likes, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
+        ArrayList<LikeNotification> Likes=new ArrayList<>();
+        ArrayList<comments> comments=new ArrayList<>();
+
+        RecyclerView rv=view.findViewById(R.id.rv);
+        FirebaseDatabase FBD=FirebaseDatabase.getInstance();
+        DatabaseReference DBRef=FBD.getReference();
+        LikesCustomAdapter adapter=new LikesCustomAdapter(getContext(),Likes);
+
+
+        rv.setAdapter(adapter);
+        SharedPreferences sp = getContext().getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
+
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        DBRef.child("Notification").child(sp.getString("userkey","")).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                Likes.clear();
+                for (DataSnapshot ds:snapshot.getChildren())
+                {
+                 try {
+                     Log.e("Value", ds.getValue().toString() + "n");
+
+                     LikeNotification l = ds.getValue(LikeNotification.class);
+                     if (l.userKey.equals(sp.getString("userkey", "")) && l.status.equals("show")) {
+                         Likes.add(l);
+
+
+                     }
+                     Collections.reverse(Likes);
+                     adapter.notifyDataSetChanged();
+
+
+                 }catch (Exception e)
+                 {}                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
     }
 }

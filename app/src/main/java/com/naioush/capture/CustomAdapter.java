@@ -19,9 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,6 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     ArrayList<ArrayList<comments> >commentArr;
     Context context;
     SharedPreferences sp;
+    private int count;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -155,14 +158,30 @@ viewHolder.NO_Likes.setText(snapshot.getChildrenCount()+"Likes");
 
     if(snapshot1.getKey().equals(
             sp.getString("userkey",""))){
-Log.e("key$$$$$$$$",snapshot1.getKey());
         viewHolder.likeHeart.setImageResource(R.drawable.filllike);
 
         viewHolder.likeHeart.setTag("liked");
+
+
+
+
     }
     else{
         viewHolder.likeHeart.setImageResource(R.drawable.likes);
         viewHolder.likeHeart.setTag("notliked");
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -227,6 +246,55 @@ if(viewHolder.likeHeart.getTag().toString().equals("liked")){
             .child(posts.get(position).key).
             child("Likes").child(sp.getString("userkey","")).removeValue();
 
+
+
+    FirebaseDatabase.getInstance().getReference("Notification")
+            .child(sp.getString("userkey","")).
+          addValueEventListener(new ValueEventListener() {
+              @Override
+              public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                  for (DataSnapshot ds:snapshot.getChildren()) {
+                      Log.e("DataSnapShot",ds.getValue().toString());
+                      LikeNotification LikeInfo = ds.getValue(LikeNotification.class);
+
+try {
+    if (LikeInfo.userKey.equals(sp.getString("userkey", ""))
+            && LikeInfo.postId.equals(posts.get(position).key)) {
+
+        FirebaseDatabase.getInstance().getReference("Notification")
+                .child(sp.getString("userkey", "")).child(ds.getKey()).child("status").setValue("hidden");
+
+    }
+}catch (Exception e){}
+  /*              if(ds.getValue(LikeNotification.class).postId.equals(posts.get(position).key)){
+                    if(ds.getValue(LikeNotification.class).userKey.equals(posts.get(position).createdBy)) {
+                        FirebaseDatabase.getInstance().getReference("Notification").child(sp.getString("userkey",""))
+                                .child(ds.getKey()).removeValue();
+
+
+
+
+
+                    }
+
+                    }
+*/
+
+                  }
+
+
+              }
+
+              @Override
+              public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+              }
+          });
+
+
+
+
+
 }
 else{
     viewHolder.likeHeart.setImageResource(R.drawable.filllike);
@@ -238,6 +306,77 @@ else{
 
 
     Log.e("!@#$$",viewHolder.likeHeart.getResources()+""+resID);
+
+    String notifKey=   FirebaseDatabase.getInstance().getReference("Notification")
+            .child(sp.getString("userkey","")).push().getKey();
+    FirebaseDatabase.getInstance().getReference("Notification")
+            .child(sp.getString("userkey","")).child(notifKey).child("userKey").setValue(sp.getString("userkey",""));
+
+
+    FirebaseDatabase.getInstance().getReference("Notification")
+            .child(sp.getString("userkey","")).child(notifKey).child("postId").setValue(posts.get(position).key);
+
+    FirebaseDatabase.getInstance().getReference("Notification")
+            .child(sp.getString("userkey","")).child(notifKey).child("status").setValue("show");
+
+
+    count = 0;
+      /* FirebaseDatabase.getInstance().getReference("Notification")
+            .child(sp.getString("userKey","")).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+                    for (DataSnapshot ds:snapshot.getChildren()) {
+
+
+                        Log.e("done","NotDone "+ds.getValue());
+
+                        if((ds.getValue(LikeNotification.class).userKey.equals(sp.getString("userkey","")))
+                       &&( ds.getValue(LikeNotification.class).postId.equals(posts.get(position).key))){
+                            String notifKey=   FirebaseDatabase.getInstance().getReference("Notification")
+                                    .child(posts.get(position).createdBy).push().getKey();
+                            FirebaseDatabase.getInstance().getReference("Notification")
+                                    .child(posts.get(position).createdBy).child(notifKey).child("userKey").setValue(sp.getString("userkey",""));
+
+
+                            FirebaseDatabase.getInstance().getReference("Notification")
+                                    .child(posts.get(position).createdBy).child(notifKey).child("postId").setValue(posts.get(position).key);
+
+                        }
+                        if(count==snapshot.getChildrenCount()){
+
+                            }
+
+                        count++;
+
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                }
+            });
+
+
+
+
+*/
+
 
 
 }

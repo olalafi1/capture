@@ -135,7 +135,8 @@ commentsArr=new ArrayList<>();
             public void onClick(View v) {
                 compitiontext.setBackgroundResource(R.drawable.selectitem);
                 teamtext.setBackgroundResource(R.color.Primary);
-
+                Intent intent=new Intent(getContext(),CompitionPosts.class);
+                startActivity(intent);
             }
         });
 
