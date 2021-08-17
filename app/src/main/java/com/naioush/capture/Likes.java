@@ -111,7 +111,7 @@ public class Likes extends Fragment {
                      Log.e("Value", ds.getValue().toString() + "n");
 
                      LikeNotification l = ds.getValue(LikeNotification.class);
-                     if (l.userKey.equals(sp.getString("userkey", "")) && l.status.equals("show")) {
+                     if (l.status.equals("show")) {
                          Likes.add(l);
 
 

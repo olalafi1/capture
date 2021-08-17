@@ -258,11 +258,11 @@ if(viewHolder.likeHeart.getTag().toString().equals("liked")){
                       LikeNotification LikeInfo = ds.getValue(LikeNotification.class);
 
 try {
-    if (LikeInfo.userKey.equals(sp.getString("userkey", ""))
+    if (LikeInfo.key.equals(sp.getString("userkey", ""))
             && LikeInfo.postId.equals(posts.get(position).key)) {
 
         FirebaseDatabase.getInstance().getReference("Notification")
-                .child(sp.getString("userkey", "")).child(ds.getKey()).child("status").setValue("hidden");
+                .child(posts.get(position).createdBy).child(ds.getKey()).child("status").setValue("hidden");
 
     }
 }catch (Exception e){}
@@ -310,14 +310,14 @@ else{
     String notifKey=   FirebaseDatabase.getInstance().getReference("Notification")
             .child(sp.getString("userkey","")).push().getKey();
     FirebaseDatabase.getInstance().getReference("Notification")
-            .child(sp.getString("userkey","")).child(notifKey).child("userKey").setValue(sp.getString("userkey",""));
+            .child(posts.get(position).createdBy).child(notifKey).child("userKey").setValue(sp.getString("userkey",""));
 
 
     FirebaseDatabase.getInstance().getReference("Notification")
-            .child(sp.getString("userkey","")).child(notifKey).child("postId").setValue(posts.get(position).key);
+            .child(posts.get(position).createdBy).child(notifKey).child("postId").setValue(posts.get(position).key);
 
     FirebaseDatabase.getInstance().getReference("Notification")
-            .child(sp.getString("userkey","")).child(notifKey).child("status").setValue("show");
+            .child(posts.get(position).createdBy).child(notifKey).child("status").setValue("show");
 
 
     count = 0;

@@ -119,7 +119,7 @@ TextView title;
 
 
 
-        FirebaseDatabase.getInstance().getReference("Users").child(sp.getString("userkey",""))
+        FirebaseDatabase.getInstance().getReference("Users").child(Likes.get(position).userKey)
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {

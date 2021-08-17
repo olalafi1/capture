@@ -28,6 +28,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="5dp">
                 <ImageView
+                    android:visibility="invisible"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -36,9 +37,10 @@
                     android:src="@drawable/path"/>
 
                 <TextView
+                    android:visibility="invisible"
                     android:id="@+id/txt"
                     android:layout_width="wrap_content"
-                    android:layout_height="8dp"
+                    android:layout_height="wrap_content"
 
                     android:gravity="bottom"
                     android:text=" OFFERS"

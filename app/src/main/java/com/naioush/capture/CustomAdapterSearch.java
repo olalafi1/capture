@@ -78,6 +78,8 @@ this.userName.setText(userName);
     public CustomAdapterSearch(Context context, ArrayList<User> Users){
         this.Users =Users;
         this.context=context;
+        Log.e("DATA",Users.size()+"");
+
 
     }
 
@@ -99,7 +101,7 @@ this.userName.setText(userName);
 viewHolder.setUserData(Users.get(position).Name,Users.get(position).photo);
 
 
-
+viewHolder.userName.setText(Users.get(position).Name);
 
 
 

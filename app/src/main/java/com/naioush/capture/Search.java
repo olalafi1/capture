@@ -32,9 +32,9 @@ EditText SearchEditText;
         SearchEditText=findViewById(R.id.SearchEditText);
         RecyclerView rv=findViewById(R.id.rv);
 
-        ArrayList<User>users =new ArrayList<>();;
+        ArrayList<User>users =new ArrayList<>();
 
-        CustomAdapterSearch adapter=new CustomAdapterSearch(this,users);
+        CustomAdapterForSearch adapter=new CustomAdapterForSearch(this,users);
 
 
         rv.setAdapter(adapter);
@@ -50,19 +50,22 @@ EditText SearchEditText;
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.e("Search",SearchEditText.getText().toString());
-//users.clear();
+users.clear();
+if(SearchEditText.getText().length()==0){
+    users.clear();}
                 FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         for (DataSnapshot ds:snapshot.getChildren() ) {
                             User u=ds.getValue(User.class);
-                            Log.e("Search",u.photo);
 
-                            if(u.Name.contains(SearchEditText.getText().toString())){
-                                Log.e("Search",u.Name);
+                            if(u.Name.contains(SearchEditText.getText().toString())&&!SearchEditText.getText().equals("")){
+                                Log.e("SearchUser",u.Name);
                                 users.add(u);
+
+                                adapter.notifyDataSetChanged();
+
                             }
-                            adapter.notifyDataSetChanged();
 
                         }
                     }

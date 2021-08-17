@@ -72,6 +72,7 @@ Intent i;
             @Override
             public void onClick(View v) {
            Intent i=new Intent(FirstPage.this,UserProfile.class);
+           i.putExtra("userID",sp.getString("userkey",""));
                 startActivity(i);
             }
         });
