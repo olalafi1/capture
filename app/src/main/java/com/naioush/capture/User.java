@@ -1,6 +1,9 @@
 package com.naioush.capture;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User  implements Parcelable {
   public   String key,verificationId,verifyCode,Name,Mobile,Email,countryPrefix,photo;
 
    public User(){}
@@ -19,4 +22,13 @@ public class User {
 
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

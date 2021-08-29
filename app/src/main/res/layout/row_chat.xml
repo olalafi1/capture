@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ripple_effect_app_white_background">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eee"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/chatimage"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/img"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true" />
+
+
+    <TextView
+        android:id="@+id/chatname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/chatimage"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/chatimage"
+        android:textSize="14sp"
+        tools:text="Eyad Alkronz"
+        android:textColor="@color/black"
+
+
+        android:layout_toRightOf="@+id/chatimage" />
+
+    <TextView
+        android:id="@+id/chatlastDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chatname"
+        tools:text="20 min"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true" />
+
+
+    <TextView
+        android:id="@+id/lastmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chatname"
+        tools:text="text text text text text text text text text text text text text text text text text text "
+        android:textColor="@color/black"
+        android:maxLines="2"
+        android:textSize="11sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:layout_alignStart="@+id/chatname"
+        android:layout_toStartOf="@+id/chatlastDate"
+
+        android:layout_marginRight="16dp"
+        android:layout_alignLeft="@+id/chatname"
+        android:layout_toLeftOf="@+id/chatlastDate" />
+
+
+</RelativeLayout>

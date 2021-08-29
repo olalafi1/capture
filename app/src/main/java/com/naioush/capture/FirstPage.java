@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.naioush.capture.R;
+import com.naioush.capture.chat.SendOffActivity;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -93,6 +95,25 @@ Intent i;
             }
         });
 
+
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+
+                if(item.getTitle().equals("Chat")){
+                    sp.edit().clear().commit();
+//                    Toast.makeText(FirstPage.this, "Clicked", Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(FirstPage.this, SendOffActivity.class);
+                    startActivity(i);
+                }
+
+
+
+                return false;
+            }
+        });
+
+
         //add the fragments you want to display in a List
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new HomePageFragment());
@@ -113,6 +134,7 @@ Intent i;
         tabLayout.setTabThreeIcon(R.drawable.mmmyteeam);
         tabLayout.setTabFourIcon(R.drawable.llikes);
         tabLayout.setTabFiveIcon(R.drawable.hhall);
+
 
 
 
