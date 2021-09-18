@@ -54,7 +54,9 @@ Intent i;
         FirebaseDatabase.getInstance().getReference("Users").child(sp.getString("userkey",null)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
                User u=snapshot.getValue(User.class);
+
                 TextView name=   nv.getHeaderView(0).findViewById(R.id.name);
                 TextView phone=   nv.getHeaderView(0).findViewById(R.id.phone);
                 ImageView profileImg=nv.getHeaderView(0).findViewById(R.id.profileImg);
@@ -101,7 +103,7 @@ Intent i;
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
 
                 if(item.getTitle().equals("Chat")){
-                    sp.edit().clear().commit();
+
 //                    Toast.makeText(FirstPage.this, "Clicked", Toast.LENGTH_SHORT).show();
                     Intent i=new Intent(FirstPage.this, SendOffActivity.class);
                     startActivity(i);

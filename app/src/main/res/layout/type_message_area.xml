@@ -87,5 +87,6 @@
         android:scaleType="centerInside"
         android:visibility="visible"
         android:src="@drawable/ic_group_11976"
+
         />
 </LinearLayout>

@@ -21,12 +21,16 @@ import spencerstudios.com.bungeelib.Bungee;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserVH> {
 
 
-
+        public interface OnUserClickListener{
+            void onUserClicked(String userKey);
+        }
 
     List<User> userList;
+    OnUserClickListener listener;
 
-    public UserAdapter( List<User> userList) {
 
+    public UserAdapter( List<User> userList,OnUserClickListener listener) {
+        this.listener=listener;
 
         this.userList=userList;
 
@@ -71,15 +75,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserVH> {
 
 
             itemView.setOnClickListener(v->{
-//                Intent intent = new Intent(itemView.getContext(), ShowProductActivity.class);
-//                intent.putExtra("productID",data.getProductId());
-//                intent.putExtra("offerId",data.getId());
-//                intent.putExtra("offerPrice",data.getPriceAfterDicount());
-//                intent.putExtra("isOffer",true);
-//                itemView.getContext().startActivity(intent);
-//                Bungee.swipeRight(itemView.getContext());
 
-                Toast.makeText(itemView.getContext(), data.Name+" *** ", Toast.LENGTH_SHORT).show();
+                listener.onUserClicked(data.key);
+
+
+//                Toast.makeText(itemView.getContext(), data.key+" *** ", Toast.LENGTH_SHORT).show();
 
             });
 

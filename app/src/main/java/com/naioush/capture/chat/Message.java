@@ -13,6 +13,7 @@ public class Message {
     String to;
     String imageUrl;
     String msg;
+    String audioUrl;
 
     public Message() {
     }
@@ -24,6 +25,16 @@ public class Message {
         this.to = to;
         this.imageUrl = imageUrl;
         this.msg = msg;
+        this.audioUrl=null;
+    }
+
+
+    public String getAudioUrl() {
+        return audioUrl;
+    }
+
+    public void setAudioUrl(String audioUrl) {
+        this.audioUrl = audioUrl;
     }
 
     public String getId() {
@@ -87,7 +98,7 @@ public class Message {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        return Objects.hash(id, createdAt, uid, imageUrl, msg);
+        return Objects.hash(id, createdAt, uid, imageUrl, msg,audioUrl);
     }
 }
 

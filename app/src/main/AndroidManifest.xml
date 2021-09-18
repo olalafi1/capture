@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.READ_SMS"/>
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
 
     <application
@@ -24,6 +25,9 @@
         android:theme="@style/Theme.Capture">
         <activity android:name=".chat.SendOffActivity"></activity>
         <activity android:name=".PhoneAuthActivity"></activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".addPost" />
         <activity android:name=".customfonts.addPost" />
         <activity android:name=".settengAbout" />
