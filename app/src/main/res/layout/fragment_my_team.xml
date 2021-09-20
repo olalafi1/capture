@@ -38,7 +38,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
-
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rv"/>
                 <TextView
                     android:id="@+id/createteam"
                     android:layout_width="match_parent"

@@ -1,19 +1,30 @@
 package com.naioush.capture;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.naioush.capture.R;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,10 +79,42 @@ public class MyTeam extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_team, container, false);
     }
-
+ArrayList<Team>teams;
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        teams=new ArrayList<>();
+
+        RecyclerView rv=view.findViewById(R.id.rv);
+        CustomAdapterForTeam adapter=new CustomAdapterForTeam(getContext(),teams);
+        rv.setAdapter(adapter);
+
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        SharedPreferences sp = getContext().getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
+        FirebaseDatabase.getInstance().getReference("Users").child(sp.getString("userkey","")).child("Teams").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                teams.clear();
+                for (DataSnapshot ds:
+snapshot.getChildren()                     ) {
+           //         ds.child("member").getChildrenCount();
+         //     ds.child("name").getValue();
+                    Log.e("TEAM",ds.child("member").getChildrenCount()+"");
+              teams.add(new Team( ds.child("name").getValue().toString(), ds.child("member").getChildrenCount()+""));
+               adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+
         view.findViewById(R.id.createteam).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
