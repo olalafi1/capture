@@ -26,4 +26,5 @@
     <string name="signUp">التسجيل</string>
     <string name="addedSuccessfully">"تمت الإضافة "</string>
     <string name="pleasefillallrecord">الرجاء التاكد من تعبئة جميع الحقول واختيار صورة</string>
+    <string name="addTeam">إضافة</string>
 </resources>

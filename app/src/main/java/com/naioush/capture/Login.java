@@ -80,7 +80,7 @@ public static String userKey;
                                 Log.e("Key",userKey);
 sp.edit().putString("userkey",userKey).apply();
 sp.edit().commit();
-                                System.out.println(sp.getString("userKry","Mohanda"));
+
                                 Log.e("Key",sp.getString("userKey",""));
                                 PhoneAuthCredential credential=PhoneAuthProvider.getCredential(user.verificationId,user.verifyCode);
                                 signWithCredental(credential);
