@@ -138,62 +138,45 @@ User u=snapshot.getValue(User.class);
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
 
-
-
-
         viewHolder.location.setText(posts.get(position).location);
 
 
-
-
         SharedPreferences sp = context.getSharedPreferences("loginSaved", Context.MODE_PRIVATE);
-FirebaseDatabase.getInstance().getReference("Posts").child(posts.get(position).key).child("Likes").addValueEventListener(new ValueEventListener() {
-    @Override
-    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-viewHolder.NO_Likes.setText(snapshot.getChildrenCount()+"Likes");
-        for (DataSnapshot snapshot1:snapshot.getChildren())  {
-    Log.e("key!@#",
-            snapshot1.getKey().equals(
-                    sp.getString("userkey",""))+"");
+     try {   FirebaseDatabase.getInstance().getReference("Posts").child(posts.get(position).key).child("Likes").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                viewHolder.NO_Likes.setText(snapshot.getChildrenCount() + "Likes");
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Log.e("key!@#",
+                            snapshot1.getKey().equals(
+                                    sp.getString("userkey", "")) + "");
 
-    if(snapshot1.getKey().equals(
-            sp.getString("userkey",""))){
-        viewHolder.likeHeart.setImageResource(R.drawable.filllike);
+                    if (snapshot1.getKey().equals(
+                            sp.getString("userkey", ""))) {
+                        viewHolder.likeHeart.setImageResource(R.drawable.filllike);
 
-        viewHolder.likeHeart.setTag("liked");
-
-
+                        viewHolder.likeHeart.setTag("liked");
 
 
-    }
-    else{
-        viewHolder.likeHeart.setImageResource(R.drawable.likes);
-        viewHolder.likeHeart.setTag("notliked");
+                    } else {
+                        viewHolder.likeHeart.setImageResource(R.drawable.likes);
+                        viewHolder.likeHeart.setTag("notliked");
 
 
+                    }
 
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-
-
-
-
-
-
-
-
-
-    }
-
-} }
-
-    @Override
-    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-    }
-});
+            }
+        });
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+
+    }catch (Exception e){}
         java.util.Date c = Calendar.getInstance().getTime();
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());

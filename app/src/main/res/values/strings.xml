@@ -26,6 +26,7 @@
     <string name="signUp">Sign UP</string>
     <string name="addedSuccessfully">added Successfully</string>
     <string name="pleasefillallrecord">  please fill all records</string>
+    <string name="addTeam">Add</string>
 
 
 </resources>

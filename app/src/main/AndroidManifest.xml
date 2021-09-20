@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capture">
-        <activity android:name=".Search"></activity>
+        <activity android:name=".ShowFollowing"></activity>
+        <activity android:name=".Search" />
         <activity android:name=".showPost" />
         <activity android:name=".CompitionPosts" />
         <activity android:name=".UserProfile" />
